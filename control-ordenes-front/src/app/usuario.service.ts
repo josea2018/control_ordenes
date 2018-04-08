@@ -21,6 +21,10 @@ export class UsuarioService {
     return this.http.put('http://localhost:8000/users/'+data.id, data);
   }
 
+  delete(id) {
+    return this.http.delete('http://localhost:8000/users/'+id);
+  }
+
 
 
 
