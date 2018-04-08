@@ -4,6 +4,7 @@ export class Usuario {
   email: string;
   password: string;
   type: string;
+  status: boolean;
 
 
   constructor() {
