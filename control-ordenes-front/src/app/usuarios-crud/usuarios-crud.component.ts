@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario} from '../usuario';
 import { UsuarioService } from '../usuario.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-usuarios-crud',
@@ -18,6 +19,7 @@ export class UsuariosCrudComponent implements OnInit {
 
   ngOnInit() {
     this.service.read(this.query).subscribe(res => {
+      //debugger;
       this.data = res.json();
       this.current_usuario = new Usuario();
     });
@@ -27,6 +29,27 @@ export class UsuariosCrudComponent implements OnInit {
     this.current_usuario = new Usuario();
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = true;
+  }
+
+
+  save() {
+    if (this.crud_operation.is_new) {
+        //debugger;
+        this.current_usuario.password = Md5.hashStr(this.current_usuario.password);
+        this.current_usuario.type = "reg";
+        this.service.insert(this.current_usuario).subscribe(res => {
+        this.current_usuario = new Usuario();
+        this.crud_operation.is_visible = false;
+        this.ngOnInit();
+      });
+      return;
+    }
+      this.service.update(this.current_usuario).subscribe(res => {
+      this.current_usuario = new Usuario();
+      this.crud_operation.is_visible = false;
+      this.ngOnInit();
+    });
+
   }
 
 

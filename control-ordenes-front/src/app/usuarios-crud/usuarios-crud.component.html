@@ -7,12 +7,13 @@
    </div>
 
    <div style="margin-top: 2%; margin-bottom: 2%;" class="form-inline" *ngIf="crud_operation.is_visible">
-    <label>Cédula:</label>
-    <input class="form-control" type="text" placeholder="201110111..." [(ngModel)]="current_usuario.cedula">
     <label>Nombre:</label>
-    <input class="form-control" type="text" placeholder="Nombre Apellido..." [(ngModel)]="current_usuario.nombre">
+    <input class="form-control" type="text" placeholder="Nombre..." [(ngModel)]="current_usuario.name">
+    <label>Correo:</label>
+    <input class="form-control" type="text" placeholder="Correo..." [(ngModel)]="current_usuario.email">
     <label>Contraseña:</label>
-    <input class="form-control" type="text" placeholder="123789..." [(ngModel)]="current_usuario.contrasenna">
+    <input class="form-control" type="text" placeholder="..." [(ngModel)]="current_usuario.password">
+
     <button class="btn btn-primary"(click)="save()">
       <i class="fa fa-floppy-o" aria-hidden="true"></i>
       Save
@@ -27,23 +28,25 @@
 
    <table style="margin-top: 2%; margin-bottom: 2%;" class="table table-striped table-hover">
     <tr>
-      <th>Cédula</th>
       <th>Nombre</th>
+      <th>Correo</th>
       <th>Contraseña</th>
+      <th>Tipo</th>
       <th class="text-right">
         <button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
         <button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
       </th>
     </tr>
     <tr *ngFor="let row of data">
-      <td>{{row.cedula}}</td>
-      <td>{{row.nombre}}</td>
-      <td>{{row.contrasenna}}</td>
+      <td>{{row.name}}</td>
+      <td>{{row.email}}</td>
+      <td>{{row.password}}</td>
+      <td>{{row.type}}</td>
       <td class="text-right">
         <div *ngIf="!row.confirm">
           <button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
           <button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
-          <a [routerLink]="['/usuarios/', row.id]" class="btn btn-info">
+          <a [routerLink]="['/users/', row.id]" class="btn btn-info">
             <i class="fa fa-eye" aria-hidden="true"></i>
           </a>
         </div>

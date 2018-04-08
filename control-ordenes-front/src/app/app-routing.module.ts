@@ -7,7 +7,8 @@ import { UsuariosCrudComponent } from './usuarios-crud/usuarios-crud.component';
 const routes: Routes = [
   { path: '', component: UsuariosCrudComponent },
   { path: 'inicio', component: InicioComponent },
-  { path: 'usuarios', component: UsuariosCrudComponent }
+  { path: 'users', component: UsuariosCrudComponent },
+  { path: 'users/:id', component: UsuariosCrudComponent }
 ];
 
 @NgModule({

@@ -1,8 +1,11 @@
 export class Usuario {
   id: number;
-  cedula: string;
-  nombre: string;
-  contrasenna: string;
+  name: string;
+  email: string;
+  password: string;
+  type: string;
+
+
   constructor() {
     // code...
   }
