@@ -18,3 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('users', 'UserController');
+Route::resource('inventarios', 'InventarioController');
