@@ -19,3 +19,4 @@ Auth::routes();
 
 Route::resource('users', 'UserController');
 Route::resource('inventarios', 'InventarioController');
+Route::resource('clientes', 'ClienteController');

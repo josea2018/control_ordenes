@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { UsuariosCrudComponent } from './usuarios-crud/usuarios-crud.component';
 import { InventarioCrudComponent } from './inventario-crud/inventario-crud.component';
+import { ClientesCrudComponent } from './clientes-crud/clientes-crud.component';
 
 
 import { HttpModule } from '@angular/http';
 import { UsuarioService } from './usuario.service';
 import { InventarioService } from './inventario.service';
+import { ClienteService } from './cliente.service';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { InventarioService } from './inventario.service';
     AppComponent,
     InicioComponent,
     UsuariosCrudComponent,
-    InventarioCrudComponent
+    InventarioCrudComponent,
+    ClientesCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { InventarioService } from './inventario.service';
   providers: [
     UsuarioService,
     InventarioService,
+    ClienteService,
   ],
   bootstrap: [AppComponent]
 })
