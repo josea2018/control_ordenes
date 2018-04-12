@@ -18,6 +18,7 @@ export class UsuariosCrudComponent implements OnInit {
   constructor(private service: UsuarioService) { }
 
   ngOnInit() {
+
     this.service.read(this.query).subscribe(res => {
       //debugger;
       this.data = res.json();
@@ -48,7 +49,8 @@ export class UsuariosCrudComponent implements OnInit {
   save() {
     if (this.crud_operation.is_new) {
         //debugger;
-        this.current_usuario.password = Md5.hashStr(this.current_usuario.password);
+        //this.current_usuario.password = Md5.hashStr(this.current_usuario.password);
+        this.current_usuario.password = this.current_usuario.password;
         this.current_usuario.type = "reg";
         this.current_usuario.status = true;
         this.service.insert(this.current_usuario).subscribe(res => {

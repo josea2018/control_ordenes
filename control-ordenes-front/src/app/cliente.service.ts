@@ -9,6 +9,7 @@ export class ClienteService {
 
 
   read(query = '') {
+    //debugger;
     return this.http.get('http://localhost:8000/clientes', {
       params: { q: query }
     });

@@ -17,6 +17,7 @@ export class ClientesCrudComponent implements OnInit {
   constructor(private service: ClienteService) { }
 
   ngOnInit() {
+      //debugger;
       this.service.read(this.query).subscribe(res => {
       //debugger;
       this.data = res.json();

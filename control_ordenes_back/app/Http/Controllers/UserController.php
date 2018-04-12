@@ -18,7 +18,7 @@ class UserController extends Controller
     }
 
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -29,7 +29,7 @@ class UserController extends Controller
         return User::create($request->all());
     }
 
-    /**
+     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -52,5 +52,6 @@ class UserController extends Controller
     {
         $user->destroy($user->id);
     }
-  
+
+
 }

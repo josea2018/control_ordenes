@@ -7,6 +7,7 @@ export class OrdenService {
 
   constructor(private http: Http) { }
 
+
   read(query = '') {
     return this.http.get('http://localhost:8000/ordenes', {
       params: { q: query }
@@ -18,15 +19,20 @@ export class OrdenService {
   }
 
   update(data: Orden) {
+    //debugger;
     return this.http.put('http://localhost:8000/ordenes/'+data.id, data);
   }
+
+
 
   delete(id) {
     //debugger;
     return this.http.delete('http://localhost:8000/ordenes/'+id);
   }
 
-
-
 }
+
+
+
+
 

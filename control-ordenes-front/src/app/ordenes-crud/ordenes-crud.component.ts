@@ -26,9 +26,11 @@ export class OrdenesCrudComponent implements OnInit {
       this.data = res.json();
       this.current_orden = new Orden();
     });
-    this.combos.clientes().subscribe(res => {
+    this.combos.clientesReturn().subscribe(res => {
       this.clientes = res.json();
     });
+
+
   }
 
 
@@ -55,7 +57,7 @@ export class OrdenesCrudComponent implements OnInit {
 
   save() {
     if (this.crud_operation.is_new) {
-        //debugger;
+
         this.service.insert(this.current_orden).subscribe(res => {
         this.current_orden = new Orden();
         this.crud_operation.is_visible = false;
@@ -63,7 +65,7 @@ export class OrdenesCrudComponent implements OnInit {
       });
       return;
     }
-
+      //debugger;
       this.service.update(this.current_orden).subscribe(res => {
       this.current_orden = new Orden();
       this.crud_operation.is_visible = false;

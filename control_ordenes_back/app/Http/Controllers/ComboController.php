@@ -7,8 +7,14 @@ use App\Cliente;
 
 class ComboController extends Controller
 {
-    public function clientes()
+	/**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function clientesReturn(Request $request)
     {
-    	return Cliente::all();
+    	//return Cliente::all();
+    	return Cliente::search($request->q);
     }
 }

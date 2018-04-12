@@ -27,7 +27,7 @@ class Cliente extends Model
       return self::where('cedula', 'ilike', "%$query%")
                   ->orWhere('nombre', 'ilike', "%$query%")
                   ->orWhere('telefono', 'ilike', "%$query%")
-                  ->orWhere('direccion', 'ilike', "%$query%");
+                  ->orWhere('direccion', 'ilike', "%$query%")->get();
     }
 
 }
