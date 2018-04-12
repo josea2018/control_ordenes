@@ -64,7 +64,7 @@ export class OrdenesCrudComponent implements OnInit {
       return;
     }
 
-    this.service.update(this.current_orden).subscribe(res => {
+      this.service.update(this.current_orden).subscribe(res => {
       this.current_orden = new Orden();
       this.crud_operation.is_visible = false;
       this.ngOnInit();
@@ -74,3 +74,4 @@ export class OrdenesCrudComponent implements OnInit {
 
 
 }
+

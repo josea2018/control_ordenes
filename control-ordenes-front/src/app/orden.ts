@@ -1,9 +1,9 @@
 export class Orden {
   id: number;
   nota_recibido: string;
-  fecha_recibido: DateTimeFormat;
+  fecha_recibido: string;
   nota_entregado: string;
-  fecha_entregado: DateTimeFormat;
+  fecha_entregado: string;
   estado: string;
   cedula_cliente: string;
   costo: number;
