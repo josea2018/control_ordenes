@@ -50,7 +50,7 @@ export class UsuariosCrudComponent implements OnInit {
         //debugger;
         this.current_usuario.password = Md5.hashStr(this.current_usuario.password);
         this.current_usuario.type = "reg";
-        this.current_usuario.status = 1;
+        this.current_usuario.status = true;
         this.service.insert(this.current_usuario).subscribe(res => {
         this.current_usuario = new Usuario();
         this.crud_operation.is_visible = false;
