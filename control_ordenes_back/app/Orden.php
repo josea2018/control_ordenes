@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+//use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\Orden as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orden extends Model
 {
-    use Notifiable;
+    //use Notifiable;
 
     protected $table = 'ordenes';
 

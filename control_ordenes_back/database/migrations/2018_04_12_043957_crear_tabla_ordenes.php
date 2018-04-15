@@ -16,9 +16,9 @@ class CrearTablaOrdenes extends Migration
         Schema::create('ordenes', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('nota_recibido');
-            $table->timestamp('fecha_recibido');
+            $table->string('fecha_recibido');
             $table->string('nota_entregado');
-            $table->timestamp('fecha_entregado');
+            $table->string('fecha_entregado');
             $table->string('estado');
             $table->string('cedula_cliente');
             $table->double('costo');

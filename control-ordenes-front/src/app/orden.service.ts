@@ -22,9 +22,11 @@ export class OrdenService {
   }
 
   delete(id) {
+    //debugger;
     return this.http.delete('http://localhost:8000/ordenes/'+id);
   }
 
 
 
 }
+
