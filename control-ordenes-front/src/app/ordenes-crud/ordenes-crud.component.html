@@ -1,19 +1,41 @@
 <div class="container">
 
-   <legend>Inventario</legend>
+   <legend>Ordenes</legend>
    <div class="form-inline">
     <input class="form-control" type="search" placeholder="Buscar.." [(ngModel)]="query">
     <button class="form-control btn btn-primary" (click)="ngOnInit()">OK</button>
    </div>
 
    <div style="margin-top: 2%; margin-bottom: 2%;" class="form-inline" *ngIf="crud_operation.is_visible">
-    <label>Nombre:</label>
-    <input class="form-control" type="text" placeholder="Nombre..." [(ngModel)]="current_inventario.nombre">
-    <label>Descripcion:</label>
-    <input class="form-control" type="text" placeholder="Descripcion..." [(ngModel)]="current_inventario.descripcion">
-    <label>Cantidad:</label>
-    <input class="form-control" type="text" placeholder="Cantidad..." [(ngModel)]="current_inventario.cantidad">
+    <label>Nota recibido:</label>
+    <input class="form-control" type="text" placeholder="Nota recibido..." [(ngModel)]="current_orden.nota_recibido">
+    <label>Fecha recibido:</label>
+    <input class="form-control" type="datetime-local" [(ngModel)]="current_orden.fecha_recibido">
+    <br><br>
+    <label>Nota entrega:</label>
+    <input class="form-control" type="text" placeholder="Nota entrega..." [(ngModel)]="current_orden.nota_entregado">
+    <label>Fecha entrega:</label>
+    <input class="form-control" type="datetime-local" [(ngModel)]="current_orden.fecha_entregado">
+    <br><br>
 
+    <label>Estado:</label>
+    <select aria-label="ngSelected demo" [(ngModel)]="current_orden.estado">
+      <option>Recibido</option>
+      <option>Revision</option>
+      <option>Entregado</option>
+    </select>
+    <br><br>
+    <label>Cliente:</label>
+
+    {{clientes | json}}
+
+    <select aria-label="ngSelected demo">
+      <option *ngFor="let row of clientes">
+        {{row.nombre}}
+      </option>
+    </select>
+
+    <br><br>
     <button class="btn btn-primary"(click)="save()">
       <i class="fa fa-floppy-o" aria-hidden="true"></i>
       Save
