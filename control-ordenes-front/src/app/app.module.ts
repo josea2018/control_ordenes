@@ -27,7 +27,7 @@ import { CombosService } from './combos.service';
     UsuariosCrudComponent,
     InventarioCrudComponent,
     ClientesCrudComponent,
-    OrdenesCrudComponent,
+    OrdenesCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +41,7 @@ import { CombosService } from './combos.service';
     InventarioService,
     ClienteService,
     OrdenService,
-    CombosService
+    CombosService,
   ],
   bootstrap: [AppComponent]
 })

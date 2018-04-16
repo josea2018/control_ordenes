@@ -25,7 +25,7 @@ class Inventario extends Model
         return self::all();
       }
       return self::where('nombre', 'ilike', "%$query%")
-                  ->orWhere('descripcion', 'ilike', "%$query%");
+                  ->orWhere('descripcion', 'ilike', "%$query%")->get();
     }
 
 }

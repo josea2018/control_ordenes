@@ -2,7 +2,7 @@
 
 namespace App;
 
-//use Illuminate\Notifications\Notifiable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\Orden as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orden extends Model
 {
-    //use Notifiable;
+    use Notifiable;
 
     protected $table = 'ordenes';
 
@@ -28,8 +28,7 @@ class Orden extends Model
       if (!$query) {
         return self::all();
       }
-      return self::where('id', '=', intval($query))->get()
-                  ->orWhere('cedula_cliente', 'ilike', "%$query%");
+      return self::where('id', '=', intval($query))
+                  ->orWhere('cedula_cliente', 'ilike', "%$query%")->get();
     }
-
 }

@@ -17,9 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::resource('users', 'UserController');
 Route::resource('inventarios', 'InventarioController');
 Route::resource('clientes', 'ClienteController');
 Route::resource('ordenes', 'OrdenController');
 
-Route::get('combos/clientes', 'ComboController@clientes');
+Route::get('combos/clientesReturn', 'ComboController@clientesReturn');

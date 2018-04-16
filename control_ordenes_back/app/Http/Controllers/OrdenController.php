@@ -29,7 +29,6 @@ class OrdenController extends Controller
         return Orden::create($request->all());
     }
 
-
     /**
      * Update the specified resource in storage.
      *
@@ -41,17 +40,6 @@ class OrdenController extends Controller
     {
         $orden->update($request->all());
         return $orden;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Orden  $orden
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Orden $orden)
-    {
-        $orden->destroy($orden->id);
     }
 
     

@@ -30,14 +30,14 @@
         <label>Cliente:</label>
         <!--{{clientes | json}}-->
         <select aria-label="ngSelected demo" [(ngModel)]="current_orden.cedula_cliente">
-          <option *ngFor="let row of clientes">
-            <p>{{row.cedula}} - {{row.nombre}}</p>
+          <option *ngFor="let elemento of clientes">
+            <p>{{elemento.cedula}} - {{elemento.nombre}}</p>
           </option>
         </select>
         <label style="margin-left: 15%;">Costo:</label>
         <input style="margin-left: 4.5%;" class="form-control" type="number" placeholder="Costo..." [(ngModel)]="current_orden.costo">
         <br><br>
-        <button style="margin-left: 10%;" class="btn btn-primary"(click)="save()">
+        <button style="margin-left: 10%;" class="btn btn-primary" (click)="save()">
           <i class="fa fa-floppy-o" aria-hidden="true"></i>
           Save
         </button>
@@ -65,6 +65,7 @@
         <button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
       </th>
     </tr>
+    <!--{{data | json}}-->
     <tr *ngFor="let row of data">
       <td>{{row.id}}</td>
       <td>{{row.fecha_recibido}}</td>

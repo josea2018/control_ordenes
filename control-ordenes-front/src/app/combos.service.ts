@@ -7,8 +7,11 @@ export class CombosService {
 
   constructor(private http: Http) { }
 
-  clientes(){
-    return this.http.get('http://localhost:8000/combos/clientes');
+  clientesReturn(query = ''){
+    //return this.http.get('http://localhost:8000/combos/clientesReturn');
+    return this.http.get('http://localhost:8000/combos/clientesReturn', {params: {q:query}
+    });
   }
+
 
 }
