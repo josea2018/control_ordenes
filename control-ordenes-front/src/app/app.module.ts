@@ -22,7 +22,9 @@ import { CombosService } from './combos.service';
 import { BoletaService } from './boleta.service';
 import { ConditionService } from './condition.service';
 import { PhotoService } from './photo.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 
 
@@ -41,7 +43,9 @@ import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpModule
+    HttpModule,
+    NgbModule.forRoot(),
+    SignaturePadModule,
 
   ],
   providers: [

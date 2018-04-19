@@ -19,7 +19,7 @@ export class OrdenService {
   }
 
   update(data: Orden) {
-    //debugger;
+    debugger;
     return this.http.put('http://localhost:8000/ordens/'+data.id, data);
   }
 
