@@ -1,0 +1,50 @@
+<div class="container">
+
+   <legend>Estados</legend>
+   <div class="form-inline">
+    <input class="form-control" type="search" placeholder="Buscar.." [(ngModel)]="query">
+    <button class="form-control btn btn-primary" (click)="ngOnInit()">OK</button>
+   </div>
+
+   <div style="margin-top: 2%; margin-bottom: 2%;" class="form-inline" *ngIf="crud_operation.is_visible">
+    <label>Descripción:</label>
+    <input class="form-control" type="text" placeholder="Descripción..." [(ngModel)]="current_condition.descripcion">
+
+    <button class="btn btn-primary"(click)="save()">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      Save
+    </button>
+    <button class="btn btn-default"(click)="crud_operation.is_visible = false">
+      <i class="fa fa-ban" aria-hidden="true"></i>
+      Cancel
+    </button>
+   </div>
+
+   <table style="margin-top: 2%; margin-bottom: 2%;" class="table table-striped table-hover">
+    <tr>
+      <th>Id</th>
+      <th>Descripción</th>
+      <th class="text-right">
+        <button class="btn btn-success" (click)="new()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button class="btn btn-info" (click)="ngOnInit()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+      </th>
+    </tr>
+    <tr *ngFor="let row of data">
+      <td>{{row.id}}</td>
+      <td>{{row.descripcion}}</td>
+      <td class="text-right">
+        <div *ngIf="!row.confirm">
+          <button class="btn btn-warning" (click)="edit(row)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+          <button class="btn btn-danger" (click)="row.confirm = true"><i class="fa fa-times" aria-hidden="true"></i></button>
+          <a [routerLink]="['/conditions/', row.id]" class="btn btn-info">
+            <i class="fa fa-eye" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div *ngIf="row.confirm">
+          <button class="btn btn-danger" (click)="row.confirm = false">Cancel</button>
+          <button class="btn btn-success" (click)="delete(row.id)">Confirm</button>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

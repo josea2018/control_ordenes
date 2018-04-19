@@ -7,7 +7,7 @@ import { InventarioCrudComponent } from './inventario-crud/inventario-crud.compo
 import { ClientesCrudComponent } from './clientes-crud/clientes-crud.component';
 import { OrdenesCrudComponent } from './ordenes-crud/ordenes-crud.component';
 import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
-
+import { ConditionsCrudComponent } from './conditions-crud/conditions-crud.component';
 
 const routes: Routes = [
   { path: '', component: UsuariosCrudComponent },
@@ -25,7 +25,10 @@ const routes: Routes = [
   { path: 'ordenes/:id', component: OrdenesCrudComponent },
   { path: '', component: BoletasCrudComponent },
   { path: 'boletas', component: BoletasCrudComponent },
-  { path: 'boletas/:id', component: BoletasCrudComponent }
+  { path: 'boletas/:id', component: BoletasCrudComponent },
+  { path: '', component: ConditionsCrudComponent },
+  { path: 'conditions', component: ConditionsCrudComponent },
+  { path: 'conditions/:id', component: ConditionsCrudComponent }
 
 ];
 
