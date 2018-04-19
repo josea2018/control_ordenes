@@ -9,30 +9,27 @@ export class OrdenService {
 
 
   read(query = '') {
-    return this.http.get('http://localhost:8000/ordenes', {
+    return this.http.get('http://localhost:8000/ordens', {
       params: { q: query }
     });
   }
 
   insert(data: Orden) {
-    return this.http.post('http://localhost:8000/ordenes', data);
+    return this.http.post('http://localhost:8000/ordens', data);
   }
 
   update(data: Orden) {
     //debugger;
-    return this.http.put('http://localhost:8000/ordenes/'+data.id, data);
+    return this.http.put('http://localhost:8000/ordens/'+data.id, data);
   }
-
 
 
   delete(id) {
     //debugger;
-    return this.http.delete('http://localhost:8000/ordenes/'+id);
+    return this.http.delete('http://localhost:8000/ordens/'+id);
   }
 
 }
-
-
 
 
 

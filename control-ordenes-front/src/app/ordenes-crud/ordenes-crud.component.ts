@@ -30,7 +30,6 @@ export class OrdenesCrudComponent implements OnInit {
       this.clientes = res.json();
     });
 
-
   }
 
 
@@ -44,6 +43,7 @@ export class OrdenesCrudComponent implements OnInit {
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = false;
     this.current_orden = row;
+
   }
 
 
@@ -56,7 +56,23 @@ export class OrdenesCrudComponent implements OnInit {
 
 
   save() {
+
     if (this.crud_operation.is_new) {
+
+    /*
+             id: number;
+      nota_recibido: string;
+      fecha_recibido: string;
+      nota_entregado: string;
+      fecha_entregado: string;
+      estado: string;
+      cedula_cliente: string;
+      costo: number;
+      firma: string;*/
+        this.current_orden.nota_entregado = "-";
+        this.current_orden.fecha_entregado = "-";
+        this.current_orden.costo = 0;
+        this.current_orden.firma = "-";
 
         this.service.insert(this.current_orden).subscribe(res => {
         this.current_orden = new Orden();
@@ -65,7 +81,7 @@ export class OrdenesCrudComponent implements OnInit {
       });
       return;
     }
-      //debugger;
+    debugger;
       this.service.update(this.current_orden).subscribe(res => {
       this.current_orden = new Orden();
       this.crud_operation.is_visible = false;

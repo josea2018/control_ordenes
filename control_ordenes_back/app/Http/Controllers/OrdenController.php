@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Orden;
 use Illuminate\Http\Request;
-
+ 
 class OrdenController extends Controller
 {
     /**
@@ -38,9 +38,22 @@ class OrdenController extends Controller
      */
     public function update(Request $request, Orden $orden)
     {
+        var_dump($orden);
         $orden->update($request->all());
         return $orden;
     }
 
-    
- }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Orden  $orden
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Orden $orden)
+    {
+        $orden->destroy($orden->id);
+    }
+
+}
+
+

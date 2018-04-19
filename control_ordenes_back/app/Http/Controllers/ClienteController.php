@@ -39,6 +39,7 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
+        var_dump($cliente);
         $cliente->update($request->all());
         return $cliente;
     }
