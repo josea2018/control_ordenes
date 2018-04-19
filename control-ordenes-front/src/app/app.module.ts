@@ -21,6 +21,7 @@ import { OrdenService } from './orden.service';
 import { CombosService } from './combos.service';
 import { BoletaService } from './boleta.service';
 import { ConditionService } from './condition.service';
+import { PhotoService } from './photo.service';
 import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
 
 
@@ -51,6 +52,7 @@ import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
     CombosService,
     BoletaService,
     ConditionService,
+    PhotoService,
   ],
   bootstrap: [AppComponent]
 })
