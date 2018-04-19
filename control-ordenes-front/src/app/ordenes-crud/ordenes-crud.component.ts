@@ -7,7 +7,6 @@ import { OrdenService } from '../orden.service';
 import { CombosService } from '../combos.service';
 import { PhotoService } from '../photo.service';
 
-
 @Component({
   selector: 'app-ordenes-crud',
   templateUrl: './ordenes-crud.component.html',
@@ -15,15 +14,19 @@ import { PhotoService } from '../photo.service';
 })
 export class OrdenesCrudComponent implements OnInit {
 
+  files : FileList;
   data: Orden[];
   clientes: Cliente[];
   conditions: Condition[];
   photos: Photo[];
   current_orden: Orden;
+  current_photo: Photo;
+  photo_names: string[];
+  //files : FileList;
   crud_operation = { is_new: false, is_visible: false };
   query: string = '';
   queryPhotos: string = '';
-
+  url: string = '';
   constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) { }
 
   ngOnInit() {
@@ -39,11 +42,14 @@ export class OrdenesCrudComponent implements OnInit {
       this.conditions = res.json();
     });
 
-  }
+    //this.current_photo = new Photo();
 
+  }
 
   new(){
     this.current_orden = new Orden();
+    this.current_photo = new Photo();
+    //this.current_photo.nombre = "";
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = true;
   }
@@ -51,7 +57,10 @@ export class OrdenesCrudComponent implements OnInit {
   edit(row) {
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = false;
+    this.current_photo = new Photo();
     this.current_orden = row;
+    this.current_photo.id_ordens = this.current_orden.id;
+
     if(this.current_orden != null)
     {
       this.photoService.read(this.current_orden.id.toString()).subscribe(res => {
@@ -98,14 +107,35 @@ export class OrdenesCrudComponent implements OnInit {
       return;
     }
     debugger;
+      //this.current_photo.nombre;
       this.service.update(this.current_orden).subscribe(res => {
       this.current_orden = new Orden();
+      /*this.photoService.insert(this.current_photo).subscribe(res => {
+      this.current_photo = new Photo();*/
       this.crud_operation.is_visible = false;
+      this.insertPhotos();
       this.ngOnInit();
-    });
+      });
+
   }
 
+ getFiles(event) {
+   debugger;
+        this.files = event.target.files;
+        this.current_photo.nombre = this.files[0].name;
+    }
 
+    insertPhotos(){
+      debugger;
+      for (var i = 0; i < this.files.length; i++) {
+         this.current_photo.nombre = this.files[i].name;
+
+         this.photoService.insert(this.current_photo).subscribe(res => {
+         this.current_photo = new Photo();
+         });
+      }
+      this.current_photo = new Photo();
+    }
 
 }
 

@@ -30,7 +30,9 @@
           </option>
         </select>
         <label style="margin-left: 18%;">Agregar foto:</label>
-        <input style="margin-left: 40%; margin-top: -2.3%;" type="file" name="imagen" size="20">
+        <input style="margin-left: 40%; margin-top: -2.3%;" class="form-control" type="file"  name="file" size="20" (change)="getFiles($event)" multiple >
+        <!--<input style="margin-left: 40%; margin-top: -2.3%;" type="file" (change)="readUrl($event)">-->
+        <!--{{photo_name}}-->
         <br><br>
         <label>Cliente:</label>
         <!--{{clientes | json}}-->
@@ -50,11 +52,13 @@
                     <!--{{data | json}}-->
                     <tr *ngFor="let p of photos">
                       <td>{{p.nombre}}</td>
+                      <div><img style="width: 100px; height: 100px;" src="./assets/images/{{p.nombre}}" /></div>
                     </tr>
               </table>
                <tr *ngIf="photos.length == 0">
                   <td colspan="4" class="text-center">No hay fotos disponibles</td>
                </tr>
+               {{current_photo.nombre}}
           </div>
 
         <button style="margin-left: 10%;" class="btn btn-primary" (click)="save()">
@@ -109,6 +113,9 @@
       <td colspan="4" class="text-center">No data available</td>
     </tr>
   </table>
+
+
+  <!--<div><img style="width: 140px; height: 140px;" src="./assets/images/tierra.jpg" /></div>-->
 
 
 </div>

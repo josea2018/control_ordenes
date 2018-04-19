@@ -15,6 +15,7 @@ export class PhotoService {
   }
 
   insert(data: Photo) {
+    debugger;
     return this.http.post('http://localhost:8000/photos', data);
   }
 
