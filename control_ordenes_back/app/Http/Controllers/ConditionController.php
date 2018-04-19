@@ -29,5 +29,29 @@ class ConditionController extends Controller
         return Condition::create($request->all());
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Condition  $condition
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Condition $condition)
+    {
+        $condition->update($request->all());
+        return $condition;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Condition  $condition
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Condition $condition)
+    {
+        $condition->destroy($condition->id);
+    }
+
 
 }

@@ -20,16 +20,19 @@
 
         <label>Estado:</label>
         <select class="selectpicker" aria-label="ngSelected demo" [(ngModel)]="current_orden.estado">
-          <option>Recibido</option>
+          <!--<option>Recibido</option>
           <option>Revision</option>
-          <option>Entregado</option>
+          <option>Entregado</option>-->
+          <option *ngFor="let estado of conditions">
+            <p>{{estado.descripcion}}</p>
+          </option>
         </select>
         <label style="margin-left: 18%;">Agregar foto:</label>
         <input style="margin-left: 40%; margin-top: -2.3%;" type="file" name="imagen" size="20">
         <br><br>
         <label>Cliente:</label>
         <!--{{clientes | json}}-->
-        <select aria-label="ngSelected demo" [(ngModel)]="current_orden.cedula_cliente">
+        <select class="selectpicker" aria-label="ngSelected demo" [(ngModel)]="current_orden.cedula_cliente">
           <option *ngFor="let elemento of clientes">
             <p>{{elemento.cedula}} - {{elemento.nombre}}</p>
           </option>

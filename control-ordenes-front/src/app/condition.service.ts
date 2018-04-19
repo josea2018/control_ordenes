@@ -18,5 +18,13 @@ export class ConditionService {
     return this.http.post('http://localhost:8000/conditions', data);
   }
 
+  update(data: Condition) {
+    return this.http.put('http://localhost:8000/conditions/'+data.id, data);
+  }
+
+  delete(id) {
+    return this.http.delete('http://localhost:8000/conditions/'+id);
+  }
+
 
 }

@@ -28,3 +28,4 @@ Route::resource('conditions', 'ConditionController');
 
 
 Route::get('combos/clientesReturn', 'ComboController@clientesReturn');
+Route::get('combos/conditionsReturn', 'ComboController@conditionsReturn');

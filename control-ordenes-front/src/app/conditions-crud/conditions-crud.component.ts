@@ -30,6 +30,19 @@ export class ConditionsCrudComponent implements OnInit {
     this.crud_operation.is_new = true;
   }
 
+  edit(row) {
+    this.crud_operation.is_visible = true;
+    this.crud_operation.is_new = false;
+    this.current_condition = row;
+  }
+
+  delete(id) {
+    this.service.delete(id).subscribe(res => {
+      this.crud_operation.is_new = false;
+      this.ngOnInit();
+    });
+  }
+
 
   save() {
     if (this.crud_operation.is_new) {
@@ -42,12 +55,13 @@ export class ConditionsCrudComponent implements OnInit {
       return;
     }
 
+    this.service.update(this.current_condition).subscribe(res => {
+     this.current_condition = new Condition();
+     this.crud_operation.is_visible = false;
+     this.ngOnInit();
+    });
+
   }
-
-
-
-
-
 
 
 

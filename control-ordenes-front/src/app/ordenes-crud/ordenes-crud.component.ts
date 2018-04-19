@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Orden } from '../orden';
 import { Cliente } from '../cliente';
+import { Condition } from '../condition';
 import { OrdenService } from '../orden.service';
 import { CombosService } from '../combos.service';
 
@@ -14,6 +15,7 @@ export class OrdenesCrudComponent implements OnInit {
 
   data: Orden[];
   clientes: Cliente[];
+  conditions: Condition[];
   current_orden: Orden;
   crud_operation = { is_new: false, is_visible: false };
   query: string = '';
@@ -28,6 +30,9 @@ export class OrdenesCrudComponent implements OnInit {
     });
     this.combos.clientesReturn().subscribe(res => {
       this.clientes = res.json();
+    });
+    this.combos.conditionsReturn().subscribe(res => {
+      this.conditions = res.json();
     });
 
   }
