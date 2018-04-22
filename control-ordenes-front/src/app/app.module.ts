@@ -18,6 +18,8 @@ import { InventarioService } from './inventario.service';
 import { ClienteService } from './cliente.service';
 import { OrdenService } from './orden.service';
 import { CombosService } from './combos.service';
+import { BoletaService } from './boleta.service';
+import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { CombosService } from './combos.service';
     UsuariosCrudComponent,
     InventarioCrudComponent,
     ClientesCrudComponent,
-    OrdenesCrudComponent
+    OrdenesCrudComponent,
+    BoletasCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { CombosService } from './combos.service';
     ClienteService,
     OrdenService,
     CombosService,
+    BoletaService
   ],
   bootstrap: [AppComponent]
 })

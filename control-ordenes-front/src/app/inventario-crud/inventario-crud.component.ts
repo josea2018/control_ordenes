@@ -46,6 +46,7 @@ export class InventarioCrudComponent implements OnInit {
 
 
   save() {
+    debugger;
     if (this.crud_operation.is_new) {
         //debugger;
         this.service.insert(this.current_inventario).subscribe(res => {

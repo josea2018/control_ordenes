@@ -6,6 +6,8 @@ import { UsuariosCrudComponent } from './usuarios-crud/usuarios-crud.component';
 import { InventarioCrudComponent } from './inventario-crud/inventario-crud.component';
 import { ClientesCrudComponent } from './clientes-crud/clientes-crud.component';
 import { OrdenesCrudComponent } from './ordenes-crud/ordenes-crud.component';
+import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
+
 
 const routes: Routes = [
   { path: '', component: UsuariosCrudComponent },
@@ -20,7 +22,10 @@ const routes: Routes = [
   { path: 'clientes/:id', component: ClientesCrudComponent },
   { path: '', component: OrdenesCrudComponent },
   { path: 'ordenes', component: OrdenesCrudComponent },
-  { path: 'ordenes/:id', component: OrdenesCrudComponent }
+  { path: 'ordenes/:id', component: OrdenesCrudComponent },
+  { path: '', component: BoletasCrudComponent },
+  { path: 'boletas', component: BoletasCrudComponent },
+  { path: 'boletas/:id', component: BoletasCrudComponent }
 
 ];
 

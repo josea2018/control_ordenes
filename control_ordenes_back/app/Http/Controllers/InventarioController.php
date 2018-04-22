@@ -39,6 +39,8 @@ class InventarioController extends Controller
      */
     public function update(Request $request, Inventario $inventario)
     {
+        //echo $request;
+        var_dump($inventario);
         $inventario->update($request->all());
         return $inventario;
     }

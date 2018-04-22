@@ -21,6 +21,9 @@ Auth::routes();
 Route::resource('users', 'UserController');
 Route::resource('inventarios', 'InventarioController');
 Route::resource('clientes', 'ClienteController');
-Route::resource('ordenes', 'OrdenController');
+Route::resource('ordens', 'OrdenController');
+//Route::resource('ordenes', 'OrdenController@/update{id}');
+//Route::get('user/{id}', 'UserController@show')
+
 
 Route::get('combos/clientesReturn', 'ComboController@clientesReturn');

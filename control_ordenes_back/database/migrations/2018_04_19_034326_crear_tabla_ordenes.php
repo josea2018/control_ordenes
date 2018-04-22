@@ -37,3 +37,4 @@ class CrearTablaOrdenes extends Migration
         Schema::dropIfExists('ordenes');
     }
 }
+

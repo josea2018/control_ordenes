@@ -57,7 +57,7 @@ export class ClientesCrudComponent implements OnInit {
       });
       return;
     }
-
+    debugger;
     this.service.update(this.current_cliente).subscribe(res => {
       this.current_cliente = new Cliente();
       this.crud_operation.is_visible = false;
