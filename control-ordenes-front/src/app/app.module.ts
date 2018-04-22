@@ -10,6 +10,7 @@ import { UsuariosCrudComponent } from './usuarios-crud/usuarios-crud.component';
 import { InventarioCrudComponent } from './inventario-crud/inventario-crud.component';
 import { ClientesCrudComponent } from './clientes-crud/clientes-crud.component';
 import { OrdenesCrudComponent } from './ordenes-crud/ordenes-crud.component';
+import { ConditionsCrudComponent } from './conditions-crud/conditions-crud.component';
 
 
 import { HttpModule } from '@angular/http';
@@ -19,7 +20,10 @@ import { ClienteService } from './cliente.service';
 import { OrdenService } from './orden.service';
 import { CombosService } from './combos.service';
 import { BoletaService } from './boleta.service';
+import { ConditionService } from './condition.service';
+import { PhotoService } from './photo.service';
 import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
+
 
 
 @NgModule({
@@ -30,7 +34,8 @@ import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
     InventarioCrudComponent,
     ClientesCrudComponent,
     OrdenesCrudComponent,
-    BoletasCrudComponent
+    BoletasCrudComponent,
+    ConditionsCrudComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,9 @@ import { BoletasCrudComponent } from './boletas-crud/boletas-crud.component';
     ClienteService,
     OrdenService,
     CombosService,
-    BoletaService
+    BoletaService,
+    ConditionService,
+    PhotoService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Orden } from '../orden';
 import { Cliente } from '../cliente';
+import { Condition } from '../condition';
+import { Photo } from '../photo';
 import { OrdenService } from '../orden.service';
 import { CombosService } from '../combos.service';
+import { PhotoService } from '../photo.service';
 
 
 @Component({
@@ -14,11 +17,14 @@ export class OrdenesCrudComponent implements OnInit {
 
   data: Orden[];
   clientes: Cliente[];
+  conditions: Condition[];
+  photos: Photo[];
   current_orden: Orden;
   crud_operation = { is_new: false, is_visible: false };
   query: string = '';
+  queryPhotos: string = '';
 
-  constructor(private service: OrdenService, private combos: CombosService) { }
+  constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) { }
 
   ngOnInit() {
     this.service.read(this.query).subscribe(res => {
@@ -28,6 +34,9 @@ export class OrdenesCrudComponent implements OnInit {
     });
     this.combos.clientesReturn().subscribe(res => {
       this.clientes = res.json();
+    });
+    this.combos.conditionsReturn().subscribe(res => {
+      this.conditions = res.json();
     });
 
   }
@@ -43,6 +52,13 @@ export class OrdenesCrudComponent implements OnInit {
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = false;
     this.current_orden = row;
+    if(this.current_orden != null)
+    {
+      this.photoService.read(this.current_orden.id.toString()).subscribe(res => {
+        //debugger;
+        this.photos = res.json();
+      });
+    }
 
   }
 

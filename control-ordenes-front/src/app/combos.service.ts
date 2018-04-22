@@ -13,5 +13,11 @@ export class CombosService {
     });
   }
 
+  conditionsReturn(query = ''){
+    //return this.http.get('http://localhost:8000/combos/clientesReturn');
+    return this.http.get('http://localhost:8000/combos/conditionsReturn', {params: {q:query}
+    });
+  }
+
 
 }

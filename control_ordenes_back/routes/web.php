@@ -22,8 +22,11 @@ Route::resource('users', 'UserController');
 Route::resource('inventarios', 'InventarioController');
 Route::resource('clientes', 'ClienteController');
 Route::resource('ordens', 'OrdenController');
+Route::resource('conditions', 'ConditionController');
+Route::resource('photos', 'PhotoController');
 //Route::resource('ordenes', 'OrdenController@/update{id}');
 //Route::get('user/{id}', 'UserController@show')
 
 
 Route::get('combos/clientesReturn', 'ComboController@clientesReturn');
+Route::get('combos/conditionsReturn', 'ComboController@conditionsReturn');
