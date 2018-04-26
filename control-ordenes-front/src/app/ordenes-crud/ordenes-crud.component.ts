@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Orden } from '../orden';
 import { Cliente } from '../cliente';
 import { Condition } from '../condition';
@@ -6,6 +6,10 @@ import { Photo } from '../photo';
 import { OrdenService } from '../orden.service';
 import { CombosService } from '../combos.service';
 import { PhotoService } from '../photo.service';
+import { SignaturePad } from 'angular2-signaturepad/signature-pad';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
 
 
 @Component({
@@ -15,16 +19,27 @@ import { PhotoService } from '../photo.service';
 })
 export class OrdenesCrudComponent implements OnInit {
 
+  files : FileList;
   data: Orden[];
   clientes: Cliente[];
   conditions: Condition[];
   photos: Photo[];
   current_orden: Orden;
+  current_photo: Photo;
+  photo_names: string[];
+  //files : FileList;
   crud_operation = { is_new: false, is_visible: false };
   query: string = '';
   queryPhotos: string = '';
+  url: string = '';
+  isEntregado: boolean;
 
-  constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) { }
+  @ViewChild(SignaturePad) signaturePad: SignaturePad;
+
+
+  constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) {
+
+   }
 
   ngOnInit() {
     this.service.read(this.query).subscribe(res => {
@@ -39,19 +54,62 @@ export class OrdenesCrudComponent implements OnInit {
       this.conditions = res.json();
     });
 
+    //this.current_photo = new Photo();
+    this.generarPdf();
+
   }
 
+  generarPdf(){
+
+      pdfMake.vfs = pdfFonts.pdfMake.vfs;
+      var dd = {
+
+                 header:    { columns: [{text: 'BOLETA DE TRABAJO FINALIZADA', alignment: 'center'}]},
+                   content:[
+                               {text: 'Nota recibido: ' + this.current_orden.nota_recibido + "\n\n" +
+                                      'Fecha recibido: ' + this.current_orden.fecha_recibido + "\n\n" +
+                                      'Nota entrega: ' + this.current_orden.nota_entregado + "\n\n" +
+                                      'Fecha entrega' + this.current_orden.fecha_entregado + "\n\n" +
+                                      'Estado: ' + this.current_orden.estado + "\n\n" +
+                                      'Cliente: ' + this.current_orden.cedula_cliente + "\n\n" +
+                                      'Costo: ' + this.current_orden.costo + "\n\n" +
+                                      'Firma: ' +  "\n\n"},
+
+
+
+                                {image: this.current_orden.firma, width: 150, height: 100},
+                                {image: './assets/images/' + this.photos[0].nombre, width: 150, height: 100},
+                            ]
+
+                };
+      pdfMake.createPdf(dd).download();
+
+
+  }
 
   new(){
     this.current_orden = new Orden();
+    this.isEntregado = false;
+    this.current_photo = new Photo();
+    //this.current_photo.nombre = "";
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = true;
   }
 
   edit(row) {
+    //let firmaPad = new SignaturePad();
     this.crud_operation.is_visible = true;
     this.crud_operation.is_new = false;
+    this.current_photo = new Photo();
     this.current_orden = row;
+    //debugger;
+    //
+    this.current_photo.id_ordens = this.current_orden.id;
+    if(this.current_orden.estado === "Entregado"){
+      this.isEntregado = true;
+    }else{
+      this.isEntregado = false;
+    }debugger;
     if(this.current_orden != null)
     {
       this.photoService.read(this.current_orden.id.toString()).subscribe(res => {
@@ -59,7 +117,9 @@ export class OrdenesCrudComponent implements OnInit {
         this.photos = res.json();
       });
     }
+    this.generarPdf();
 
+    setTimeout(() =>  this.signaturePad.fromDataURL(this.current_orden.firma), 500);
   }
 
 
@@ -88,7 +148,7 @@ export class OrdenesCrudComponent implements OnInit {
         this.current_orden.nota_entregado = "-";
         this.current_orden.fecha_entregado = "-";
         this.current_orden.costo = 0;
-        this.current_orden.firma = "-";
+        this.current_orden.firma = this.signaturePad.toDataURL();
 
         this.service.insert(this.current_orden).subscribe(res => {
         this.current_orden = new Orden();
@@ -97,14 +157,45 @@ export class OrdenesCrudComponent implements OnInit {
       });
       return;
     }
-    debugger;
+
+      //this.current_photo.nombre;
+      debugger;
+      this.current_orden.firma = this.signaturePad.toDataURL();
       this.service.update(this.current_orden).subscribe(res => {
       this.current_orden = new Orden();
+      /*this.photoService.insert(this.current_photo).subscribe(res => {
+      this.current_photo = new Photo();*/
       this.crud_operation.is_visible = false;
+      this.insertPhotos();
       this.ngOnInit();
-    });
+      });
+      this.insertPhotos();
+
   }
 
+ getFiles(event) {
+   debugger;
+        this.files = event.target.files;
+        this.current_photo.nombre = this.files[0].name;
+    }
+
+    insertPhotos(){
+      debugger;
+      for (var i = 0; i < this.files.length; i++) {
+         this.current_photo.nombre = this.files[i].name;
+
+         this.photoService.insert(this.current_photo).subscribe(res => {
+         this.current_photo = new Photo();
+         });
+      }
+      this.current_photo = new Photo();
+      debugger;
+      this.ngOnInit();
+    }
+
+  limpiar_firma(){
+    this.signaturePad.clear();
+  }
 
 
 }
