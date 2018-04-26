@@ -21,7 +21,7 @@ class Orden extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'nota_recibido', 'fecha_recibido', 'nota_entregado', 'fecha_entregado', 'estado', 'cedula_cliente', 'costo', 'firma'
+        'id', 'nota_recibido', 'fecha_recibido', 'nota_entregado', 'fecha_entregado', 'estado', 'cedula_cliente', 'costo', 'firma', 'usuario'
     ];
 
 

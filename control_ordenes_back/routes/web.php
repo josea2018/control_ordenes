@@ -30,3 +30,4 @@ Route::resource('photos', 'PhotoController');
 
 Route::get('combos/clientesReturn', 'ComboController@clientesReturn');
 Route::get('combos/conditionsReturn', 'ComboController@conditionsReturn');
+Route::get('combos/usersReturn', 'ComboController@usersReturn');

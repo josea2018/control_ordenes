@@ -6,6 +6,15 @@
     <button class="form-control btn btn-primary" (click)="ngOnInit()">OK</button>
    </div>
        <div style="margin-top: 2%; margin-bottom: 2%;" class="form-inline" *ngIf="crud_operation.is_visible">
+
+        <label>Usuario:</label>
+        <select [disabled]="isEntregado" class="selectpicker" aria-label="ngSelected demo" [(ngModel)]="current_orden.usuario">
+          <option *ngFor="let u of users">
+            <p>{{u.id}} - {{u.name}}</p>
+          </option>
+        </select>
+        <br><br>
+
         <label>Nota recibido:</label>
         <input class="form-control" type="text"  [disabled]="isEntregado" placeholder="Nota recibido..." [(ngModel)]="current_orden.nota_recibido">
         <label style="margin-left: 4%;">Fecha recibido:</label>
@@ -79,13 +88,15 @@
           <i class="fa fa-floppy-o" aria-hidden="true"></i>
           Save
         </button>
-        <button style="margin-left: 5%;" class="btn btn-danger"(click)="crud_operation.is_visible = false">
-          <i class="fa fa-ban" aria-hidden="true"></i>
-          Cancel
-        </button>
+
          <button style="margin-left: 5%;" class="btn btn-warning"(click)="generarPdf()">
           <i class="fa fa-floppy-o" aria-hidden="true"></i>
           PDF
+        </button>
+
+        <button style="margin-left: 5%;" class="btn btn-danger"(click)="crud_operation.is_visible = false">
+          <i class="fa fa-ban" aria-hidden="true"></i>
+          Cancel
         </button>
       </div>
 

@@ -68,5 +68,12 @@ export class UsuariosCrudComponent implements OnInit {
 
   }
 
+  desactivarUsuario(){
+    this.current_usuario.status = false;
+    this.edit(this.current_usuario);
+    this.save();
+
+  }
+
 
 }

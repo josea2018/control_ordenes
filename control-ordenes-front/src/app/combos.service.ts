@@ -19,5 +19,11 @@ export class CombosService {
     });
   }
 
+  usersReturn(query = ''){
+    //return this.http.get('http://localhost:8000/combos/clientesReturn');
+    return this.http.get('http://localhost:8000/combos/usersReturn', {params: {q:query}
+    });
+  }
+
 
 }
