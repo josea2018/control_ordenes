@@ -43,6 +43,7 @@ export class OrdenesCrudComponent implements OnInit {
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
 
+
   constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) {
 
    }
@@ -64,6 +65,7 @@ export class OrdenesCrudComponent implements OnInit {
     });
 
   }
+
 
   generarPdf(){
       debugger;

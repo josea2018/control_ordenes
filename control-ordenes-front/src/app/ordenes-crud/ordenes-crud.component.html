@@ -10,7 +10,7 @@
         <label>Usuario:</label>
         <select [disabled]="isEntregado" class="selectpicker" aria-label="ngSelected demo" [(ngModel)]="current_orden.usuario">
           <option *ngFor="let u of users">
-            <p>{{u.id}} - {{u.name}}</p>
+            <p *ngIf="u.status == true">{{u.id}} - {{u.name}}</p>
           </option>
         </select>
         <br><br>
@@ -32,7 +32,6 @@
           <option>Revision</option>
           <option>Entregado</option>-->
 
-
           <option *ngFor="let estado of conditions">
             <p>{{estado.descripcion}}</p>
           </option>
@@ -42,6 +41,8 @@
         <!--<input style="margin-left: 40%; margin-top: -2.3%;" type="file" (change)="readUrl($event)">-->
         <!--{{photo_name}}-->
         <br><br>
+
+
         <label>Cliente:</label>
         <!--{{clientes | json}}-->
         <select [disabled]="isEntregado" class="selectpicker" aria-label="ngSelected demo" [(ngModel)]="current_orden.cedula_cliente">
@@ -49,6 +50,8 @@
             <p>{{elemento.cedula}} - {{elemento.nombre}}</p>
           </option>
         </select>
+
+
         <label style="margin-left: 15%;">Costo:</label>
         <input style="margin-left: 4.5%;" [disabled]="isEntregado" class="form-control" type="number" placeholder="Costo..." [(ngModel)]="current_orden.costo">
         <br><br>
