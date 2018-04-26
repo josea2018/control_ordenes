@@ -33,6 +33,10 @@ export class OrdenesCrudComponent implements OnInit {
   queryPhotos: string = '';
   url: string = '';
   isEntregado: boolean;
+  private fileReader = new FileReader();
+  //private base64Encoded: string;
+  //base64Img = require('base64-img');
+  //carro = this.base64Img.base64Sync('./assets/images/carro.jpg');
 
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
@@ -54,38 +58,51 @@ export class OrdenesCrudComponent implements OnInit {
       this.conditions = res.json();
     });
 
-    //this.current_photo = new Photo();
-    this.generarPdf();
-
   }
 
   generarPdf(){
-
+      debugger;
       pdfMake.vfs = pdfFonts.pdfMake.vfs;
       var dd = {
 
                  header:    { columns: [{text: 'BOLETA DE TRABAJO FINALIZADA', alignment: 'center'}]},
                    content:[
-                               {text: 'Nota recibido: ' + this.current_orden.nota_recibido + "\n\n" +
-                                      'Fecha recibido: ' + this.current_orden.fecha_recibido + "\n\n" +
-                                      'Nota entrega: ' + this.current_orden.nota_entregado + "\n\n" +
-                                      'Fecha entrega' + this.current_orden.fecha_entregado + "\n\n" +
-                                      'Estado: ' + this.current_orden.estado + "\n\n" +
-                                      'Cliente: ' + this.current_orden.cedula_cliente + "\n\n" +
-                                      'Costo: ' + this.current_orden.costo + "\n\n" +
-                                      'Firma: ' +  "\n\n"},
+                               {text: 'Nota recibido: ' + this.current_orden.nota_recibido + "\n\n\n" +
+                                      'Fecha recibido: ' + this.current_orden.fecha_recibido + "\n\n\n" +
+                                      'Nota entrega: ' + this.current_orden.nota_entregado + "\n\n\n" +
+                                      'Fecha entrega' + this.current_orden.fecha_entregado + "\n\n\n" +
+                                      'Estado: ' + this.current_orden.estado + "\n\n\n" +
+                                      'Cliente: ' + this.current_orden.cedula_cliente + "\n\n\n" +
+                                      'Costo: ' + this.current_orden.costo + "\n\n\n" +
+                                      'Firma: ' +  "\n\n\n"},
 
 
 
                                 {image: this.current_orden.firma, width: 150, height: 100},
-                                {image: './assets/images/' + this.photos[0].nombre, width: 150, height: 100},
-                            ]
+                            ],
+
+                            styles:{
+                              header:{
+                                margin: 30,
+                                fontSize: 22,
+                                bold: true
+                              }
+
+                            },
+
+                            footer: {
+                                    columns: [
+                                      { text: 'Gracias por preferirnos', alignment: 'center' }
+                                    ]
+                            },
 
                 };
       pdfMake.createPdf(dd).download();
 
 
   }
+
+
 
   new(){
     this.current_orden = new Orden();
@@ -117,7 +134,7 @@ export class OrdenesCrudComponent implements OnInit {
         this.photos = res.json();
       });
     }
-    this.generarPdf();
+    //this.generarPdf();
 
     setTimeout(() =>  this.signaturePad.fromDataURL(this.current_orden.firma), 500);
   }

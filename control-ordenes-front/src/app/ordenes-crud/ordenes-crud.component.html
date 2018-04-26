@@ -43,6 +43,7 @@
         <label style="margin-left: 15%;">Costo:</label>
         <input style="margin-left: 4.5%;" [disabled]="isEntregado" class="form-control" type="number" placeholder="Costo..." [(ngModel)]="current_orden.costo">
         <br><br>
+
         <div>
           <label>Firma:</label>
           <div *ngIf="!isEntregado">
@@ -81,6 +82,10 @@
         <button style="margin-left: 5%;" class="btn btn-danger"(click)="crud_operation.is_visible = false">
           <i class="fa fa-ban" aria-hidden="true"></i>
           Cancel
+        </button>
+         <button style="margin-left: 5%;" class="btn btn-warning"(click)="generarPdf()">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i>
+          PDF
         </button>
       </div>
 
