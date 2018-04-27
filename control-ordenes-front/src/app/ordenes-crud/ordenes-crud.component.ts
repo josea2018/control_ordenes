@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Orden } from '../orden';
 import { Cliente } from '../cliente';
 import { Condition } from '../condition';
+import { Usuario } from '../usuario';
 import { Photo } from '../photo';
 import { OrdenService } from '../orden.service';
 import { CombosService } from '../combos.service';
@@ -23,6 +24,7 @@ export class OrdenesCrudComponent implements OnInit {
   data: Orden[];
   clientes: Cliente[];
   conditions: Condition[];
+  users: Usuario[];
   photos: Photo[];
   current_orden: Orden;
   current_photo: Photo;
@@ -41,6 +43,7 @@ export class OrdenesCrudComponent implements OnInit {
   @ViewChild(SignaturePad) signaturePad: SignaturePad;
 
 
+
   constructor(private service: OrdenService, private combos: CombosService, private photoService: PhotoService) {
 
    }
@@ -57,8 +60,12 @@ export class OrdenesCrudComponent implements OnInit {
     this.combos.conditionsReturn().subscribe(res => {
       this.conditions = res.json();
     });
+    this.combos.usersReturn().subscribe(res => {
+      this.users = res.json();
+    });
 
   }
+
 
   generarPdf(){
       debugger;

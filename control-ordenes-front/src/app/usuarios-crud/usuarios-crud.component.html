@@ -18,10 +18,17 @@
       <i class="fa fa-floppy-o" aria-hidden="true"></i>
       Save
     </button>
-    <button class="btn btn-default"(click)="crud_operation.is_visible = false">
-      <i class="fa fa-ban" aria-hidden="true"></i>
+
+    <button class="btn btn-warning"(click)="desactivarUsuario()">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+      Desactivar
+    </button>
+
+    <button class="btn btn-danger" (click)="crud_operation.is_visible = false">
+      <i class="fa fa-times" aria-hidden="true"></i>
       Cancel
     </button>
+
    </div>
 
 

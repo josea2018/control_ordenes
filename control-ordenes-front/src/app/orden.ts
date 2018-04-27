@@ -8,6 +8,7 @@ export class Orden {
   cedula_cliente: string;
   costo: number;
   firma: string;
+  usuario: string;
 
   constructor() {
     // code...
